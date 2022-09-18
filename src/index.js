@@ -1,13 +1,38 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import GoAnimalPage from "./routes/animalUnic.page";
+import HomePage from "./routes/home.page";
+import GoAnimal from "../src/components/animalUnic.jsx";
+import Navbar from "./components/navbar";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Navbar />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/",
+        element: <GoAnimalPage />,
+      },
+      {
+        path: "/animalUnic",
+        element: <GoAnimal />,
+      },
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
